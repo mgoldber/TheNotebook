@@ -38,22 +38,12 @@ router.route('/signup')
 
 router.route('/login')
       .post(passport.authenticate('local'), (req, res) => {
-    console.log(req.user);
     res.send(req.user);
 });
 
 router.route('/logout', (req, res) => {
     req.logout();
     res.json('User logged out.');
-});
-
-router.route('/me')
-    .get((req, res) => {
-    if (req.user) {
-        res.status(200).send(req.user)
-    } else {
-        res.status(401).json({ message: 'Unauthorized.' });
-    }
 });
 
 

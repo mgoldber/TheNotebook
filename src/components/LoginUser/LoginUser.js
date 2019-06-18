@@ -8,10 +8,8 @@ class LoginUser extends React.Component {
             email: '',
             password: '',
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e) {
+    handleSubmit = e => {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         // 1. Collect all of the user data from the state
@@ -25,20 +23,22 @@ class LoginUser extends React.Component {
             body: JSON.stringify(user),
         })
         .then((res) => {
-            // 3. If the user is valid, log them in                   
+            // 3. If the user is valid, log them in 
             if (res.status !== 401) {
                 return res.json();                
             } else {
-                // 4. If the user is invalid, let them know and give them another shot to try again. another shot to try again.                            
+                // 4. If the user is invalid, let them know and give them another shot to try again. another shot to try again.
                 return console.log('Unauthorized');
             }
         })
         .then((json) => {
-            this.props.refresh();
+            console.log(json);
+            this.props.setUser(json);
+            this.props.login(true);
         });
 
     }
-    handleChange(e) {
+    handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value,
         });

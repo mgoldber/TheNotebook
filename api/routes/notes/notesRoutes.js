@@ -19,6 +19,7 @@ router.route('/notes')
 router.route('/notes')
     .post(async (req, res, next) => {
         try {
+
             const note = new Note(req.body);
             note.save().then((doc) => {
                 res.status(200).send(doc)
@@ -44,6 +45,21 @@ router.route('/notes/:user_id')
         } catch (e) {
             next(e);
         }
+    });
+
+router.route('/notes/:id')
+    .delete(async (req, res, next) => {
+        console.log("ARE WE GOING HERE");
+        Note.findById(req.params.id)
+        .then(note => {
+            console.log(req.user);
+            console.log(typeof(note.author), typeof(req.user._id))
+            if (!note.author.equals(req.user._id)) {
+                res.status(401).send("You can't delete someone elses notes");
+            } else {
+                return note.remove().then(() => res.send("OK"));
+            }
+        });
     });
 
 

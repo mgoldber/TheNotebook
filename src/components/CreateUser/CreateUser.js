@@ -9,10 +9,8 @@ class CreateUser extends React.Component {
             email: '',
             password: '',
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e) {
+    handleSubmit = e => {
         e.preventDefault();
         // 1. Collect all of the user data from the state
         const user = Object.assign({}, this.state);
@@ -30,7 +28,7 @@ class CreateUser extends React.Component {
             this.props.refresh();
         });
     }
-    handleChange(e) {
+    handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         });

@@ -8,16 +8,15 @@ class CreateNote extends React.Component {
             title: '',
             description: '',
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e) {
+    handleSubmit = e => {
         e.preventDefault();
         // 1. Get the contents of the note as well as the user who created it
         const note = Object.assign({}, this.state);
+        console.log(this.props);
         note.author = this.props.user._id;
         // 2. Post that to our back end to create a note
-        fetch('/api/note', {
+        fetch('/api/notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +26,7 @@ class CreateNote extends React.Component {
         })
         .then(this.props.onCreate)
     }
-    handleChange(e) {
+    handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         });

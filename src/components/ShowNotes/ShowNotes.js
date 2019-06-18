@@ -8,13 +8,12 @@ class ShowNotes extends React.Component {
         this.state = {
             notes: [],
         };
-        this.refresh = this.refresh.bind(this);
     }
     componentWillMount() {
         this.refresh();
     }
 
-    refresh() {
+    refresh = () => {
         // 1. Fetch all the exist user notes by a user's ID
         fetch(`/api/notes`, { credentials: 'include'})
         .then((res) => {
@@ -42,10 +41,10 @@ class ShowNotes extends React.Component {
                                                         user={ this.props.user }
                                                         {...note} />)}
                 </ul>
-                {/* { this.props.user.role === 'editor' ?
+                { this.props.user.role !== 'editor' ?
                     <CreateNote user={this.props.user} onCreate={ this.refresh } /> :
                     null
-                } */}
+                }
             </div>
         );
     }

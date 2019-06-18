@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
-
+const session = require('express-session');
 const passport = require('passport');
 
 const User = require('./routes/users/usersModel');
@@ -21,9 +21,12 @@ const { router: noteRoutes } = require('./routes/notes/notesRoutes');
 const { router: userRoutes } = require('./routes/users/usersRoutes'); 
 
 // Utilize routes
+passport.use(User.createStrategy());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 router.use(passport.initialize());
+router.use(session({ secret: 'mysecret', resave: false, saveUninitialized: true }));
+router.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

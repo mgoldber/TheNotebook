@@ -8,44 +8,32 @@ class App extends Component {
         super();
         this.state = {
             loggedIn: false,
+            user: null
         };
-        this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this);
-        this.refresh = this.refresh.bind(this);
     }
-    login() {
+    setUser = (user) => {
         this.setState({
-            loggedIn: true
+            user: user
         })
     }
 
-    logout() {
+    login = (loggedIn) => {
+        this.setState({
+            loggedIn: loggedIn
+        })
+    }
+
+    logout = (loggedIn) => {
         fetch('/api/logout', {
             method: 'GET',
             credentials: 'include'
         })
         .then(() => {
             this.setState({
-                loggedIn: false,
+                loggedIn: loggedIn,
                 user: null
             });
         });
-    }
-
-    refresh() {
-        fetch('/api/me', {
-            method: 'GET',
-            credentials: 'include'
-        })
-        .then((res) => res.json())
-        .then((user) => {
-            if (user._id) {
-                this.setState({
-                    user:user
-                }); 
-                this.login();
-            }
-        })
     }
 
     render() {
@@ -53,18 +41,17 @@ class App extends Component {
             <div>
                 <header>
                     <h1>Notebook</h1>
-                    { this.state.loggedIn && <button onClick={this.logout}>Logout</button> }
+                    { this.state.loggedIn && <button onClick={() => this.logout(false)}>Logout</button> }
                 </header>
                 <main>
                     { this.state.loggedIn  ?
                         <div>
                             <ShowNotes user={this.state.user}/>
-
                         </div>
                     :
                         <div>
-                            <CreateUser refresh={this.refresh} />
-                            <LoginUser refresh={this.refresh} login={this.login} /> 
+                            <CreateUser />
+                            <LoginUser login={this.login} setUser={this.setUser}/> 
                         </div>
                     }
                 </main>
