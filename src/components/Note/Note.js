@@ -10,10 +10,10 @@ const Note = ({_id, title, description, author, onDelete, user}) => {
   return <li>
     <strong>{ title }</strong> - { description }&nbsp;
 
-    { author == user._id ?
+    {/* { author === user._id ?
       <a href='#' onClick={ deleteNote }>(Delete)</a> :
       null
-    }
+    } */}
   </li>
 }
 

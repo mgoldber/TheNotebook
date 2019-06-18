@@ -1,6 +1,6 @@
 import React from 'react';
-import CreateNote from './CreateNote'
-import Note from './Note';
+import CreateNote from '../CreateNote'
+import Note from '../Note';
 
 class ShowNotes extends React.Component {
     constructor() {
@@ -17,8 +17,12 @@ class ShowNotes extends React.Component {
     refresh() {
         // 1. Fetch all the exist user notes by a user's ID
         fetch(`/api/notes`, { credentials: 'include'})
-        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+            return res.json();
+        })
         .then((notes) => {
+            console.log(notes);
             // 2. Store them in the state
             this.setState({
                 notes,
@@ -33,15 +37,15 @@ class ShowNotes extends React.Component {
         return (
             <div>
                 <ul>
-                    {this.state.notes.map(note => <Note key={ note._id }
+                    {this.state.notes && this.state.notes.map(note => <Note key={ note._id }
                                                         onDelete={ this.refresh }
                                                         user={ this.props.user }
                                                         {...note} />)}
                 </ul>
-                { this.props.user.role === 'editor' ?
+                {/* { this.props.user.role === 'editor' ?
                     <CreateNote user={this.props.user} onCreate={ this.refresh } /> :
                     null
-                }
+                } */}
             </div>
         );
     }

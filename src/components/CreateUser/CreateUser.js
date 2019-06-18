@@ -1,5 +1,5 @@
 import React from 'react';
-import Field from './Field';
+import Field from '../Field';
 
 class CreateUser extends React.Component {
     constructor() {
