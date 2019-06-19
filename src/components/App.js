@@ -50,7 +50,7 @@ class App extends Component {
                         </div>
                     :
                         <div>
-                            <CreateUser />
+                            <CreateUser login={this.login} setUser={this.setUser}/>
                             <LoginUser login={this.login} setUser={this.setUser}/> 
                         </div>
                     }

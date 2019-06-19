@@ -21,7 +21,6 @@ router.route('/signup')
                 name: req.body.name,
                 email: req.body.email
             });
-            console.log(newUser);
             User.register(newUser, req.body.password, (err, user) => {
                 if (err) {
                     res.send(err);

@@ -25,7 +25,8 @@ class CreateUser extends React.Component {
         })
         .then((res) => res.json())
         .then((json) => {
-            this.props.refresh();
+            this.props.setUser(json);
+            this.props.login(true);
         });
     }
     handleChange = e => {

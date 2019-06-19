@@ -17,11 +17,9 @@ class ShowNotes extends React.Component {
         // 1. Fetch all the exist user notes by a user's ID
         fetch(`/api/notes`, { credentials: 'include'})
         .then((res) => {
-            console.log(res);
             return res.json();
         })
         .then((notes) => {
-            console.log(notes);
             // 2. Store them in the state
             this.setState({
                 notes,

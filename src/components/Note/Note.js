@@ -3,8 +3,14 @@ import React from 'react';
 const Note = ({_id, title, description, author, onDelete, user}) => {
   const deleteNote = (e) => {
     e.preventDefault();
-    console.log(_id);
-    fetch(`/api/notes/${_id}`, { method: 'DELETE', credentials: 'include'})
+    fetch(`/api/notes/${_id}`, { 
+      method: 'DELETE', 
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
     .then(res => onDelete());
   }
 

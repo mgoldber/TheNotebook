@@ -13,7 +13,6 @@ class CreateNote extends React.Component {
         e.preventDefault();
         // 1. Get the contents of the note as well as the user who created it
         const note = Object.assign({}, this.state);
-        console.log(this.props);
         note.author = this.props.user._id;
         // 2. Post that to our back end to create a note
         fetch('/api/notes', {

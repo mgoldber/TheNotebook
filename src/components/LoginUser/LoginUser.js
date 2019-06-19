@@ -32,7 +32,6 @@ class LoginUser extends React.Component {
             }
         })
         .then((json) => {
-            console.log(json);
             this.props.setUser(json);
             this.props.login(true);
         });

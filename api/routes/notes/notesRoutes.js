@@ -49,12 +49,9 @@ router.route('/notes/:user_id')
 
 router.route('/notes/:id')
     .delete(async (req, res, next) => {
-        console.log("ARE WE GOING HERE");
         Note.findById(req.params.id)
         .then(note => {
-            console.log(req.user);
-            console.log(typeof(note.author), typeof(req.user._id))
-            if (!note.author.equals(req.user._id)) {
+            if (!note.author.equals(req.body._id)) {
                 res.status(401).send("You can't delete someone elses notes");
             } else {
                 return note.remove().then(() => res.send("OK"));
