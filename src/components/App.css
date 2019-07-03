@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,600|Pacifico&display=swap');
+
+/* font-family: 'Pacifico', cursive;
+font-family: 'Barlow', sans-serif; */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(247, 247, 93);
+    background-image: url(../assets/background.png);
+    background-size: cover;
+    min-height: 100vh;
+    font-family: 'Barlow', sans-serif;
+    padding-top: 50px;
+    margin: 0;
+}
+
+.wrapper {
+    width: 85%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+button {
+    font-family: 'Pacifico', cursive;
+    color: #d102bf;
+    text-align: center;
+}
+
+h1 {
+    font-size: 58px;
+    margin: 0;
+    margin-bottom: 40px;
+    filter: drop-shadow(4px 4px 0 #f16ee7);
+}
+
+h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 20px;
+    border-radius: 22px;
+    border: solid 4px #feff00;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 30px auto 0;
+}
+
+button:hover {
+    background: #feff00;
+    color: #8b0b81;
+}
+
+.landingBox {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.formBox {
+    background-color: white;
+    filter: drop-shadow(10px 10px 0 #e5e509);
+    min-width: 250px;
+    width: 47%;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+input {
+    background-color: #feff00;
+    border: 4px solid transparent;
+    padding: 8px;
+    font-size: 13px;
+    width: 70%;
+}
+
+input:active,
+input:focus {
+    border: 4px solid #e5e509;
+    background: #e5e509;
+}
+
+label {
+    font-weight: 600;
+    color: #d102bf;
+    margin-bottom: 8px;
+}
+
+ul {
+    background-color: #fff;
+    filter: drop-shadow(10px 10px 0 #e5e509);
+    list-style-type: none;
+    padding: 30px 25px;
+    margin-bottom: 50px;
+}
+
+.addNote {
+    width: 100%;
+}
+
+strong {
+    font-weight: 600;
+    color: #d102bf;
+}
+
+ul li {
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+.deleteButton {
+    background-color: #f30b0b;
+    color: white;
+    border-radius: 17px;
+    border: solid 3px #feff00;
+    text-decoration: none;
+    padding: 1.5px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.x {
+    font-size: 15px;
+}
+
+.deleteButton:hover,
+.deleteButton:focus-within {
+    background-color: white;
+    color: #f30b0b;
+}
+
+input[name="description"] {
+    width: 90%;
+}
+
+header button {
+    background-color: #e5e509;
+}
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 45px;
+    }
+    .landingBox .formBox {
+        width: 100%;
+    }
+}

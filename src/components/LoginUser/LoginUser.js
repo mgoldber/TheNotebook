@@ -23,9 +23,9 @@ class LoginUser extends React.Component {
             body: JSON.stringify(user),
         })
         .then((res) => {
-            // 3. If the user is valid, log them in 
+            // 3. If the user is valid, log them in
             if (res.status !== 401) {
-                return res.json();                
+                return res.json();
             } else {
                 // 4. If the user is invalid, let them know and give them another shot to try again. another shot to try again.
                 return console.log('Unauthorized');
@@ -44,7 +44,7 @@ class LoginUser extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="formBox">
                 <h2>Login User</h2>
                 <form onSubmit={this.handleSubmit}>
                     <Field

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ShowNotes from './ShowNotes';
 import CreateUser from './CreateUser';
 import LoginUser from './LoginUser';
+import './App.css';
 
 class App extends Component {
     constructor() {
@@ -38,9 +39,9 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <header>
-                    <h1>Notebook</h1>
+                    <h1>The Real Notebook</h1>
                     { this.state.loggedIn && <button onClick={() => this.logout(false)}>Logout</button> }
                 </header>
                 <main>
@@ -49,9 +50,9 @@ class App extends Component {
                             <ShowNotes user={this.state.user}/>
                         </div>
                     :
-                        <div>
+                        <div className="landingBox">
                             <CreateUser login={this.login} setUser={this.setUser}/>
-                            <LoginUser login={this.login} setUser={this.setUser}/> 
+                            <LoginUser login={this.login} setUser={this.setUser}/>
                         </div>
                     }
                 </main>

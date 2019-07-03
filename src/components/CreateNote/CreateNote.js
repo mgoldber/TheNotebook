@@ -32,7 +32,7 @@ class CreateNote extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="formBox addNote">
                 <h2>Add a Note</h2>
                 <form onSubmit={this.handleSubmit}>
                     <Field
@@ -53,7 +53,7 @@ class CreateNote extends React.Component {
                 </form>
             </div>
         );
-    }  
+    }
 }
 
 export default CreateNote;

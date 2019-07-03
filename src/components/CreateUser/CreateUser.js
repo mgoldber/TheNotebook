@@ -36,7 +36,7 @@ class CreateUser extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="formBox">
                 <h2>Create User</h2>
                 <form onSubmit={this.handleSubmit}>
                     <Field
@@ -64,7 +64,7 @@ class CreateUser extends React.Component {
                 </form>
             </div>
         );
-    }    
+    }
 }
 
 export default CreateUser;
